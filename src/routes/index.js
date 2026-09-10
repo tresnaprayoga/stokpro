@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const authRoutes = require('./authRoutes');
 
 router.get('/health', (req, res) => {
   res.status(200).json({
@@ -8,5 +9,8 @@ router.get('/health', (req, res) => {
     message: 'Server is running normally'
   });
 });
+
+// Mount auth routes -> /api/auth/*
+router.use('/auth', authRoutes);
 
 module.exports = router;
